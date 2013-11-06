@@ -6,3 +6,6 @@
 localshop.db
 *.pyc
 *.swp
+.installed.cfg
+/bin/
+/*eggs/
