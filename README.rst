@@ -16,23 +16,35 @@ packages.
 Getting started
 ---------------
 
-Download and install localshop via the following command::
+Django uses Pillow, so you're likely going to need a stack of system libraries to get that to build properly (you'd need them with pip too). For apt based systems::
 
-    pip install localshop
+    sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms1-dev libwebp-dev tcl8.5-dev tk8.5-dev python-dev
 
-This should best be done in a new virtualenv. Now initialize your localshop 
-environment by issuing the following command::
+See https://pypi.python.org/pypi/Pillow/2.2.1 for other systems.
 
-    localshop init
+Grab this repo, then run::
+
+    python bootstrap.py
+    ./bin/buildout
+
+Now initialize your localshop environment by issuing the following command::
+
+    ./bin localshop init
+
+for automation, if you want to drop the interaction::
+
+    ./bin/localshop init --no-superuser
+
+You'll need a fixture to create the superuser though, django docs can tell you how.
 
 If you are upgrading from an earlier version simply run::
 
-    localshop upgrade
+    ./bin/localshop upgrade
 
 And then start it via::
 
-    localshop run_gunicorn
-    localshop celery worker -B -E
+    ./bin/localshop run_gunicorn
+    ./bin/localshop celery worker -B -E
 
 Celeryd is required to do the mirroring of the pypi packages once they 
 are needed.
