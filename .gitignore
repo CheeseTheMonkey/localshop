@@ -9,3 +9,4 @@ localshop.db
 .installed.cfg
 /bin/
 /*eggs/
+/parts/
